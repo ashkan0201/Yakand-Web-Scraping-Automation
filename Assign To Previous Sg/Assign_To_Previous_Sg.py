@@ -44,7 +44,7 @@ def process(Ticketnumber):
             ("Check Task AssignToPreviousSg Active status (Technicals layer) Step2", lambda: STEP_AssignToPreviousSg_2(DRIVER)),
             ("Check Task AssignToPreviousSg Active status (Analysis layer) Step3", lambda: STEP_AssignToPreviousSg_3(DRIVER)),
             ("Check Task AssignToPreviousSg Resolved status (Feedback layer) Step4", lambda: STEP_AssignToPreviousSg_4(DRIVER))
-        ]
+        ] 
         for name, func in steps:
             step_info = {"function": name, "status": "started", "layer": None, "error": None}
             try:
