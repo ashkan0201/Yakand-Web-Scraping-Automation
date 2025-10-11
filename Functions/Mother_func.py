@@ -1854,7 +1854,7 @@ def STEP_SupplemantaryQuestions_2(driver):
     if check_should_exist_Tasks(driver, "taskSupplemantaryQuestions") == False: return "Failed: Task SupplemantaryQuestions button should exist but not found"
     if "Success" in result_B and "Success" in result_A: return "STEP_SupplemantaryQuestions_2: Success Task SupplemantaryQuestions Check Active (technicals) status"
     else:
-        if "Failed" in result_B: return result_B
+        if "Failed" in result_B: return result_B 
         elif "Failed" in result_A: return result_A
 
 def STEP_SupplemantaryQuestions_3(driver):
