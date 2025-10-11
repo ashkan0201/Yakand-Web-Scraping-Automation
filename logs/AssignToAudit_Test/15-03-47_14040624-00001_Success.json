@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040624-00001",
+    "start_time": "2025-09-22 14:56:17",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToAudit button not should exist in Active,Pending Status (aduit layer) Step1",
+            "status": "STEP_AssignToAudit_1: Success Task AssignToAudit button not should exist in this Active and Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToAudit Active status (Technicals layer) Step2",
+            "status": "STEP_AssignToAudit_2: Success Task AssignToAudit Check Active (technicals) status",
+            "layer": "[WG-223] سامانه کانال های حضوری-9991",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToAudit Active status (Analysis layer) Step3",
+            "status": "STEP_AssignToAudit_3: Success Task AssignToAudit Check Active (analysis) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToAudit button not should exist in Resoved Status (Feedback layer) Step4",
+            "status": "STEP_AssignToAudit_4: Success Task AssignToAudit button not should exist in this resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

@@ -1,0 +1,36 @@
+{
+    "Guid": "61e63db5-bef9-d114-b838-1361031ca402",
+    "start_time": "2025-08-27 15:44:22",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Search And Open Offerings",
+            "status": null,
+            "error": {
+                "type": "TypeError",
+                "message": "Search_And_Open_Form() missing 1 required positional argument: 'Guid'",
+                "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 51, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 44, in <lambda>\n    (\"Search And Open Offerings\", lambda: Search_And_Open_Form(DRIVER)),\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: Search_And_Open_Form() missing 1 required positional argument: 'Guid'\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "TypeError",
+        "message": "Search_And_Open_Form() missing 1 required positional argument: 'Guid'",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 51, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 44, in <lambda>\n    (\"Search And Open Offerings\", lambda: Search_And_Open_Form(DRIVER)),\n                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: Search_And_Open_Form() missing 1 required positional argument: 'Guid'\n"
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 13:13:54",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Checked Task Park button not should exist in Active status and audit layer Step1",
+            "status": "STEP_Park_1: Success Task Park button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task Park Checked Pending status and audit layer Step2",
+            "status": "STEP_Park_2: Success Task Park Checked Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task Park button not should exist in Active status and Technical layer Step3",
+            "status": "STEP_Park_3: Success Task Park button not should exist in Active status",
+            "layer": "منطقه ناک نوکیا3 [WG-273]",
+            "error": null
+        },
+        {
+            "function": "Checked Task Park Checked Pending status and Technical layer Step4",
+            "status": "STEP_Park_4: Success Task Park Checked Pending status",
+            "layer": "منطقه ناک نوکیا3 [WG-273]",
+            "error": null
+        },
+        {
+            "function": "Checked Task Park button not should exist in Active status and analysis layer Step5",
+            "status": "STEP_Park_5: Success Task Park button not should exist in Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Task Park button not should exist in resolved status and Feedback layer Step6",
+            "status": "STEP_Park_7: Success Task Park button not should exist in Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

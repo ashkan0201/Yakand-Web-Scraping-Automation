@@ -1,0 +1,41 @@
+{
+    "Guid": "5b1246a9-6f5b-bcc6-1763-0fee57e811cf",
+    "start_time": "2025-08-27 15:03:12",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Back to Standard Favorite",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Adding Offering Step",
+            "status": null,
+            "error": {
+                "type": "ElementNotInteractableException",
+                "message": "Message: Element <i class=\"fa fa-star text-lightgray small-icon\"> could not be scrolled into view\nStacktrace:\nRemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8\nWebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5\nElementNotInteractableError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:368:5\nwebdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:165:11\ninteraction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11\nclickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:327:29\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:210:31\n",
+                "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 50, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 44, in <lambda>\n    (\"Adding Offering Step\", lambda: Add_favorite(DRIVER, RANDOM_G)),\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 165, in Add_favorite\n    add_favorite.click()\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py\", line 93, in click\n    self._execute(Command.CLICK_ELEMENT)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py\", line 394, in _execute\n    return self._parent.execute(command, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 344, in execute\n    self.error_handler.check_response(response)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 229, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.ElementNotInteractableException: Message: Element <i class=\"fa fa-star text-lightgray small-icon\"> could not be scrolled into view\nStacktrace:\nRemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8\nWebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5\nElementNotInteractableError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:368:5\nwebdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:165:11\ninteraction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11\nclickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:327:29\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:210:31\n\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "ElementNotInteractableException",
+        "message": "Message: Element <i class=\"fa fa-star text-lightgray small-icon\"> could not be scrolled into view\nStacktrace:\nRemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8\nWebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5\nElementNotInteractableError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:368:5\nwebdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:165:11\ninteraction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11\nclickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:327:29\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:210:31\n",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 50, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 44, in <lambda>\n    (\"Adding Offering Step\", lambda: Add_favorite(DRIVER, RANDOM_G)),\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 165, in Add_favorite\n    add_favorite.click()\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py\", line 93, in click\n    self._execute(Command.CLICK_ELEMENT)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py\", line 394, in _execute\n    return self._parent.execute(command, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 344, in execute\n    self.error_handler.check_response(response)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 229, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.ElementNotInteractableException: Message: Element <i class=\"fa fa-star text-lightgray small-icon\"> could not be scrolled into view\nStacktrace:\nRemoteError@chrome://remote/content/shared/RemoteError.sys.mjs:8:8\nWebDriverError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:199:5\nElementNotInteractableError@chrome://remote/content/shared/webdriver/Errors.sys.mjs:368:5\nwebdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:165:11\ninteraction.clickElement@chrome://remote/content/marionette/interaction.sys.mjs:134:11\nclickElement@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:327:29\nreceiveMessage@chrome://remote/content/marionette/actors/MarionetteCommandsChild.sys.mjs:210:31\n\n"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "Guid": "61e63db5-bef9-d114-b838-1361031ca402",
+    "start_time": "2025-08-27 15:24:08",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Back to Standard Favorite",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Adding Offering Step",
+            "status": null,
+            "error": null
+        },
+        {
+            "function": "Removing Offering Step",
+            "status": "Removing Successed",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

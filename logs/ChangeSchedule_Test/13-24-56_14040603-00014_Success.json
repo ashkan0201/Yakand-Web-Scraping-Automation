@@ -1,0 +1,62 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 13:20:24",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Active status and audit layer Step1",
+            "status": "STEP_ChangeSchedule_1: Success Task ChangeSchedule button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment Pending status and audit layer Step2",
+            "status": "STEP_ChangeSchedule_2: Success Task ChangeSchedule Checked Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Active status and layer layer Step3",
+            "status": "STEP_ChangeSchedule_3: Success Task ChangeSchedule button not should exist in Active status",
+            "layer": "منطقه ناک البرز [WG-136]",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment Pending status and Technical layer Step4",
+            "status": "STEP_ChangeSchedule_4: Success Task ChangeSchedule Checked Pending status",
+            "layer": "منطقه ناک البرز [WG-136]",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Active status and Analysis layer Step5",
+            "status": "STEP_ChangeSchedule_5: Success Task ChangeSchedule button not should exist in Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Resolved status and Feedback layer Step6",
+            "status": "STEP_ChangeSchedule_6: Success Task ChangeSchedule button not should exist in Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

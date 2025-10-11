@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 14:27:14",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis button not should exist in Active,Pending Status (Audit layer) Step1",
+            "status": "STEP_SendToAnalysis_1: Success Task SendToAnalysis button not should exist in this Active and Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis Active status (Technicals layer) Step2",
+            "status": "STEP_SendToAnalysis_2: Success Task SendToAnalysis button not should exist in this Active and Pending status",
+            "layer": "Hamyari(jafarian)[WG-268]",
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis button not should exist in Active Status (Analysis layer) Step3",
+            "status": "STEP_SendToAnalysis_3: Success Task SendToAnalysis Checked Active (Technicals) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis button not should exist in Resolved Status (Feedback layer) Step4",
+            "status": "STEP_SendToAnalysis_4: Success Task SendToAnalysis button not should exist in this resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

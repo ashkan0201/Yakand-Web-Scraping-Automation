@@ -1,0 +1,36 @@
+{
+    "Ticket_id": "14040712-00003",
+    "start_time": "2025-10-04 13:24:12",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "STEP_AssignToPreviousSg_1: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "InvalidSessionIdException",
+        "message": "Message: Tried to run command without establishing a connection\n",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 51, in process\n    result = func()\n             ^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 44, in <lambda>\n    (\"Check Task AssignToPreviousSg Active status (Technicals layer) Step2\", lambda: STEP_AssignToPreviousSg_2(DRIVER)),\n                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 1998, in STEP_AssignToPreviousSg_2\n    result_task = taskAssignToPreviousSg(driver)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 880, in taskAssignToPreviousSg\n    driver.execute_script(\"arguments[0].scrollIntoView(true); arguments[0].click();\", btnAssignToPreviousSG)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 404, in execute_script\n    return self.execute(command, {\"script\": script, \"args\": converted_args})[\"value\"]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 344, in execute\n    self.error_handler.check_response(response)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 229, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.WebDriverException: Message: Failed to decode response from marionette\n\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 81, in process\n    step_info[\"layer\"] = Ticket_layer(DRIVER)\n                         ^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 256, in Ticket_layer\n    Support_Group_WEB = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id=\"TierQueue\"]'))).text\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\support\\wait.py\", line 86, in until\n    value = method(self._driver)\n            ^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\support\\expected_conditions.py\", line 81, in _predicate\n    return driver.find_element(*locator)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 738, in find_element\n    return self.execute(Command.FIND_ELEMENT, {\"using\": by, \"value\": value})[\"value\"]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py\", line 344, in execute\n    self.error_handler.check_response(response)\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py\", line 229, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.InvalidSessionIdException: Message: Tried to run command without establishing a connection\n\n"
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 11:54:45",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Checked Active Audit Step1",
+            "status": "STEP_ReleaseIncident_1: Success Release Incident Checked Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Pending Audit Step2",
+            "status": "STEP_ReleaseIncident_2: Success Release Incident Checked Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Active Technicals Step3",
+            "status": "STEP_ReleaseIncident_3: Success Release Incident Checked Active status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Checked Pending Technicals Step4",
+            "status": "STEP_ReleaseIncident_4: Success Release Incident Checked Pending status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Checked Active Analysis Step5",
+            "status": "STEP_ReleaseIncident_5: Success Release Incident Checked Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Resolved Feedback Step6",
+            "status": "STEP_ReleaseIncident_6: Success Release Incident Checked Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

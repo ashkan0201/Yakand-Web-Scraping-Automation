@@ -1,0 +1,62 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 11:14:51",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Active Audit Step1",
+            "status": "STEP_Assigntome_1: Success Assign To Me Checked Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Pending to Active Audit Step2",
+            "status": "STEP_Assigntome_2: Success Assign To Me Checked Pendings to Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Active Technicals Step3",
+            "status": "STEP_Assigntome_3: Success Assign To Me Checked Active status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Check Pending to Active Technicals Step4",
+            "status": "STEP_Assigntome_4: Success Assign To Me Checked Pendings to Active status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Check Resolved Analysis Step5",
+            "status": "STEP_Assigntome_5: Success Assign To Me Checked Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Resolved Feedback Step6",
+            "status": "STEP_Assigntome_6: Success Assign To Me Checked Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

@@ -1,0 +1,80 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 12:59:02",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Active status and audit layer Step1",
+            "status": "STEP_AddAttachment_1: Success Task AddAttachment button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment Checked Active status and audit layer Step2",
+            "status": "STEP_AddAttachment_2: Success Task AddAttachment Checked Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Pending status and aduit layer Step3",
+            "status": "STEP_AddAttachment_3: Success Task AddAttachment button not should exist in Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Active status and technical layer Step4",
+            "status": "STEP_AddAttachment_4: Success Task AddAttachment button not should exist in Active status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment Checked Active status and technical layer Step5",
+            "status": "STEP_AddAttachment_5: Success Task AddAttachment Checked Active status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Pending status and technical layer Step6",
+            "status": "STEP_AddAttachment_6: Success Task AddAttachment button not should exist in Pending status",
+            "layer": "روان ارتباط [WG-205]",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in Active status and analysis layer Step7",
+            "status": "STEP_AddAttachment_7: Success Task AddAttachment button not should exist in Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment Checked Active status and analysis layer Step8",
+            "status": "STEP_AddAttachment_8: Success Task AddAttachment Checked Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Task AddAttachment button not should exist in resolved status and feedback layer Step9",
+            "status": "STEP_AddAttachment_10: Success Task AddAttachment button not should exist in resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

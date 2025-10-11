@@ -1,0 +1,40 @@
+{
+    "Ticket_id": "14040712-00005",
+    "start_time": "2025-10-04 14:58:03",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "Failed",
+            "layer": "شرکت فناپ [WG-029]",
+            "error": {
+                "type": "Exception",
+                "message": "STEP_AssignToPreviousSg_1 - 0.1 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 53, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: STEP_AssignToPreviousSg_1 - 0.1 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "Exception",
+        "message": "STEP_AssignToPreviousSg_1 - 0.1 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 53, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: STEP_AssignToPreviousSg_1 - 0.1 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg\n"
+    }
+}

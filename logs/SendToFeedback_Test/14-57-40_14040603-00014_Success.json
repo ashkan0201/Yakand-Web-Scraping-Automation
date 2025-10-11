@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 14:49:18",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis button not should exist in Active,Pending Status (Audit layer) Step1",
+            "status": "STEP_SendToFeedback_1: Success Task SendToFeedback button not should exist in this Active and Pending status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis button not should exist in Active,Pending Status (Technicals layer) Step2",
+            "status": "STEP_SendToFeedback_2: Success Task SendToFeedback button not should exist in this Active and Pending status",
+            "layer": "توسعه شبکه همراه(امور مناطق) [WG-234]",
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis button not should exist in Active Status (Analysis layer) Step3",
+            "status": "STEP_SendToFeedback_3: Success Task SendToFeedback button not should exist in this Active (Analysis) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task SendToAnalysis Active status (Analysis layer) Step4",
+            "status": "STEP_SendToFeedback_4: Success Task SendToAnalysis Checked resolved (Feedback) status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

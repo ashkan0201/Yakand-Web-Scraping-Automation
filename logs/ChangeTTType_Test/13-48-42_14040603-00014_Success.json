@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-15 13:40:43",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task ChangeTTType Active status (aduit layer) Step1",
+            "status": "STEP_ChangeTTType_1: Success Task ChangeTTType Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task ChangeTTType button not should exist in Active,Pending Status (Technicals layer) Step2",
+            "status": "STEP_ChangeTTType_2: Success Task ChangeTTType button not should exist in this Active and Pending status",
+            "layer": "عملیات شبکه [WG-235]",
+            "error": null
+        },
+        {
+            "function": "Check Task ChangeTTType Active status (analysis layer) Step3",
+            "status": "STEP_ChangeTTType_3: Success Task ChangeTTType Check Active (analysis) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task ChangeTTType resolved status (feedback layer) Step4",
+            "status": "STEP_ChangeTTType_4: Success Task ChangeTTType Check resolved (feedback) status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

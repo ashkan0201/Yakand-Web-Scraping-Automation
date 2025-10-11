@@ -1,0 +1,42 @@
+{
+    "Guid": "734da702-5efc-b4b1-e8da-103256e70e06",
+    "start_time": "2025-10-04 15:24:43",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening Request Affering",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "USER Q",
+            "status": "Failed",
+            "error": {
+                "type": "TimeoutException",
+                "message": "Message: Timed out after 20s waiting for request matching /SearchCRM\n",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Creating Ticket\\Create_Ticket.py\", line 52, in process\n    result = func()\n             ^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Creating Ticket\\Create_Ticket.py\", line 44, in <lambda>\n    (\"USER Q\", lambda: do_Q1(DRIVER)),\n                       ^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 59, in do_Q1\n    request = driver.wait_for_request(r'/SearchCRM', timeout=20)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\seleniumwire\\inspect.py\", line 83, in wait_for_request\n    raise TimeoutException('Timed out after {}s waiting for request matching {}'.format(timeout, pat))\nselenium.common.exceptions.TimeoutException: Message: Timed out after 20s waiting for request matching /SearchCRM\n\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "ticket_id": null,
+    "error": {
+        "type": "TimeoutException",
+        "message": "Message: Timed out after 20s waiting for request matching /SearchCRM\n",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Creating Ticket\\Create_Ticket.py\", line 52, in process\n    result = func()\n             ^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Creating Ticket\\Create_Ticket.py\", line 44, in <lambda>\n    (\"USER Q\", lambda: do_Q1(DRIVER)),\n                       ^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 59, in do_Q1\n    request = driver.wait_for_request(r'/SearchCRM', timeout=20)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\seleniumwire\\inspect.py\", line 83, in wait_for_request\n    raise TimeoutException('Timed out after {}s waiting for request matching {}'.format(timeout, pat))\nselenium.common.exceptions.TimeoutException: Message: Timed out after 20s waiting for request matching /SearchCRM\n\n"
+    }
+}

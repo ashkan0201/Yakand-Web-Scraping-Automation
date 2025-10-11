@@ -1,0 +1,41 @@
+{
+    "Guid": "61e63db5-bef9-d114-b838-1361031ca402",
+    "start_time": "2025-08-27 15:26:36",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Back to Standard Favorite",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Adding Offering Step",
+            "status": null,
+            "error": {
+                "type": "Exception",
+                "message": "Adding Favorite RO Error",
+                "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 51, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 45, in <lambda>\n    (\"Adding Offering Step\", lambda: Add_favorite(DRIVER, RANDOM_G)),\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 168, in Add_favorite\n    return Check_Add_Favorite(driver, random_guid)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 189, in Check_Add_Favorite\n    raise Exception(\"Adding Favorite RO Error\")\nException: Adding Favorite RO Error\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "Exception",
+        "message": "Adding Favorite RO Error",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 51, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 45, in <lambda>\n    (\"Adding Offering Step\", lambda: Add_favorite(DRIVER, RANDOM_G)),\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 168, in Add_favorite\n    return Check_Add_Favorite(driver, random_guid)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 189, in Check_Add_Favorite\n    raise Exception(\"Adding Favorite RO Error\")\nException: Adding Favorite RO Error\n"
+    }
+}

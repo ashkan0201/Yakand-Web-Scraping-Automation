@@ -1,0 +1,33 @@
+{
+    "Guid": "5b1246a9-6f5b-bcc6-1763-0fee57e811cf",
+    "start_time": "2025-08-27 14:32:24",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Adding Offering Step",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Removing Offering Step",
+            "status": "Adding Successed",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

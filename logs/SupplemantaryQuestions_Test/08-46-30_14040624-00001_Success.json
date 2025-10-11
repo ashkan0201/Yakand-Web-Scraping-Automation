@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040624-00001",
+    "start_time": "2025-09-16 08:42:00",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task SupplemantaryQuestions Active status (aduit layer) Step1",
+            "status": "STEP_SupplemantaryQuestions_1: Success Task SupplemantaryQuestions Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task SupplemantaryQuestions Active status (Technicals layer) Step2",
+            "status": "STEP_SupplemantaryQuestions_2: Success Task SupplemantaryQuestions Check Active (technicals) status",
+            "layer": "منطقه ناک نوکیا3 [WG-273]",
+            "error": null
+        },
+        {
+            "function": "Check Task SupplemantaryQuestions button not should exist in Active Status (Analysis layer) Step3",
+            "status": "STEP_SupplemantaryQuestions_3: Success Task SupplemantaryQuestions button not should exist in this Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task SupplemantaryQuestions button not should exist in Resolved Status (Feedback layer) Step4",
+            "status": "STEP_SupplemantaryQuestions_4: Success Task SupplemantaryQuestions button not should exist in this Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

@@ -1,0 +1,86 @@
+{
+    "Ticket_id": "14040603-00014",
+    "start_time": "2025-09-14 11:25:30",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Checked Active Audit Step1",
+            "status": "STEP_AssignIncident_1: Success Assign Incident Checked Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Pending to Active Audit Step2",
+            "status": "STEP_AssignIncident_2: Success Assign Incident Checked Pendings to Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Active Audit Step3",
+            "status": "STEP_AssignIncident_3: Success Assign Incident Checked Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Checked Active Technicals Step4",
+            "status": "STEP_AssignIncident_4: Success Assign Incident Checked Active status",
+            "layer": "منطقه ناک البرز [WG-136]",
+            "error": null
+        },
+        {
+            "function": "Checked Pending to Active Technicals Step5",
+            "status": "STEP_AssignIncident_5: Success Assign Incident Checked Pendings to Active status",
+            "layer": "منطقه ناک البرز [WG-136]",
+            "error": null
+        },
+        {
+            "function": "Checked Active Technicals Step6",
+            "status": "STEP_AssignIncident_6: Success Assign Incident Checked Active status",
+            "layer": "منطقه ناک البرز [WG-136]",
+            "error": null
+        },
+        {
+            "function": "Checked Active Analysis Step7",
+            "status": "STEP_AssignIncident_7: Success Assign Incident Checked Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Active Analysis Step8",
+            "status": "STEP_AssignIncident_8: Success Assign Incident Checked Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Checked Resolved Feedback Step9",
+            "status": "STEP_AssignIncident_9: Success Assign Incident Checked Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        },
+        {
+            "function": "Checked Resolved Feedback Step10",
+            "status": "STEP_AssignIncident_10: Success Assign Incident Checked Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

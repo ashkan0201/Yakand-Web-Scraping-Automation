@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040705-00006",
+    "start_time": "2025-10-04 11:02:23",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task CloseIncident button not should exist in Active,Pending Status (Audit layer) Step1",
+            "status": "STEP_taskCloseIncident_1: Success Task CloseIncident button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task CloseIncident button not should exist in Active,Pending Status (Technicals layer) Step2",
+            "status": "STEP_taskCloseIncident_2: Success Task CloseIncident button not should exist in Active status",
+            "layer": "خدمت در محل[WG-213]",
+            "error": null
+        },
+        {
+            "function": "Check Task CloseIncident button not should exist in Active Status (Analysis layer) Step3",
+            "status": "STEP_taskCloseIncident_3: Success Task CloseIncident button not should exist in Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task CloseIncident Resolved Status (Feedback layer) Step4",
+            "status": "STEP_taskCloseIncident_4: Success Task CloseIncident Check Resolved (feedback) status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

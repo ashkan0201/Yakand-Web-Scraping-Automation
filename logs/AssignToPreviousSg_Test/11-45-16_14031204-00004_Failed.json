@@ -1,0 +1,46 @@
+{
+    "Ticket_id": "14031204-00004",
+    "start_time": "2025-10-04 11:38:41",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "STEP_AssignToPreviousSg_1: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (Technicals layer) Step2",
+            "status": "Failed",
+            "layer": "زیرساخت خدمات امن تراکنشی [WG-253]",
+            "error": {
+                "type": "Exception",
+                "message": "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 59, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "Exception",
+        "message": "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 59, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals\n"
+    }
+}

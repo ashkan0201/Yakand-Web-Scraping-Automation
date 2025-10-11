@@ -1,0 +1,41 @@
+{
+    "Guid": "61e63db5-bef9-d114-b838-1361031ca402",
+    "start_time": "2025-08-27 16:28:34",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Search And Open Offerings",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Adding Offering Step",
+            "status": null,
+            "error": {
+                "type": "TypeError",
+                "message": "argument of type 'Response' is not iterable",
+                "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 51, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 45, in <lambda>\n    (\"Adding Offering Step\", lambda: Add_favorite(DRIVER, RANDOM_G)),\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 169, in Add_favorite\n    return Check_Add_Favorite(driver, random_guid)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 183, in Check_Add_Favorite\n    if \"GetFavoriteOfferings\" in  request.response:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: argument of type 'Response' is not iterable\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "TypeError",
+        "message": "argument of type 'Response' is not iterable",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 51, in process_guid\n    result = func()\n          ^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Favorit Request Offerings\\Fav_Offerings.py\", line 45, in <lambda>\n    (\"Adding Offering Step\", lambda: Add_favorite(DRIVER, RANDOM_G)),\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 169, in Add_favorite\n    return Check_Add_Favorite(driver, random_guid)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 183, in Check_Add_Favorite\n    if \"GetFavoriteOfferings\" in  request.response:\n       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: argument of type 'Response' is not iterable\n"
+    }
+}

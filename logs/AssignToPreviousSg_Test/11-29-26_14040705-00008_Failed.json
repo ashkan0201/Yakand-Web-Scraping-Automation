@@ -1,0 +1,46 @@
+{
+    "Ticket_id": "14040705-00008",
+    "start_time": "2025-10-04 11:21:58",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "STEP_AssignToPreviousSg_1: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (Technicals layer) Step2",
+            "status": "Failed",
+            "layer": "رهیاب پیام گستران [WG-047]",
+            "error": {
+                "type": "Exception",
+                "message": "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 60, in process\n    step_info[\"status\"] = result\n                           ^^^^^^\nException: STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "Exception",
+        "message": "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 60, in process\n    step_info[\"status\"] = result\n                           ^^^^^^\nException: STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals\n"
+    }
+}

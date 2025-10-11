@@ -1,0 +1,50 @@
+{
+    "Ticket_id": "14040624-00001",
+    "start_time": "2025-09-15 15:13:47",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task UpdateCoordinate Active status (aduit layer) Step1",
+            "status": "STEP_UpdateCoordinate_1: Success Task UpdateCoordinate Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task UpdateCoordinate button not should exist in Active,Pending Status (Technicals layer) Step2",
+            "status": "STEP_UpdateCoordinate_2: Success Task UpdateCoordinate button not should exist in this Active and Pending status",
+            "layer": "منطقه فرافن [WG-206]",
+            "error": null
+        },
+        {
+            "function": "Check Task UpdateCoordinate Active status (Analysis layer) Step3",
+            "status": "STEP_UpdateCoordinate_3: Success Task UpdateCoordinate Check Active (analysis) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task UpdateCoordinate Resolved status (Feedback layer) Step4",
+            "status": "STEP_UpdateCoordinate_4: Success Task UpdateCoordinate Check Resolved (feedback) status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

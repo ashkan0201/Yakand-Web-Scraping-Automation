@@ -1,0 +1,40 @@
+{
+    "Ticket_id": "14040712-00005",
+    "start_time": "2025-10-04 14:28:42",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "Failed",
+            "layer": "ممیزی",
+            "error": {
+                "type": "UnboundLocalError",
+                "message": "cannot access local variable 'result' where it is not associated with a value",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 51, in process\n    result = func()\n             ^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 43, in <lambda>\n    (\"Check Task AssignToPreviousSg Active status (aduit layer) Step1\", lambda: STEP_AssignToPreviousSg_1(DRIVER)),\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 1954, in STEP_AssignToPreviousSg_1\n    result_task = taskAssignToPreviousSg(driver)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 898, in taskAssignToPreviousSg\n    return result\n           ^^^^^^\nUnboundLocalError: cannot access local variable 'result' where it is not associated with a value\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "UnboundLocalError",
+        "message": "cannot access local variable 'result' where it is not associated with a value",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 51, in process\n    result = func()\n             ^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 43, in <lambda>\n    (\"Check Task AssignToPreviousSg Active status (aduit layer) Step1\", lambda: STEP_AssignToPreviousSg_1(DRIVER)),\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 1954, in STEP_AssignToPreviousSg_1\n    result_task = taskAssignToPreviousSg(driver)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Functions\\Mother_func.py\", line 898, in taskAssignToPreviousSg\n    return result\n           ^^^^^^\nUnboundLocalError: cannot access local variable 'result' where it is not associated with a value\n"
+    }
+}

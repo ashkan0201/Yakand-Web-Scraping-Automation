@@ -1,0 +1,40 @@
+{
+    "Ticket_id": "14040705-00008",
+    "start_time": "2025-10-04 11:34:54",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "Failed",
+            "layer": "ممیزی",
+            "error": {
+                "type": "Exception",
+                "message": "Failed: Task AssignToPreviousSg button not should exist but found",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 53, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: Failed: Task AssignToPreviousSg button not should exist but found\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "Exception",
+        "message": "Failed: Task AssignToPreviousSg button not should exist but found",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakabd Auto Test\\Assign To Previous Sg\\Assign_To_Previous_Sg.py\", line 53, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: Failed: Task AssignToPreviousSg button not should exist but found\n"
+    }
+}
