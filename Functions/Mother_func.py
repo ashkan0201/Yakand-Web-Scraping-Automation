@@ -1889,7 +1889,7 @@ def STEP_AssignToAudit_2(driver):
     if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToAudit_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe" 
     if taskAssignToTechnicals(driver) == False: return "STEP_AssignToAudit_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals" 
     if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToAudit_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe" 
-    if map[-2] != "ممیزی":
+    if map[-2] != "ممیزی": 
         result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToAudit")
         if check_should_exist_Tasks(driver, "taskAssignToAudit") == False: return "Failed: Task AssignToAudit button should exist but not found"
         result_task = taskAssignToAudit(driver)
