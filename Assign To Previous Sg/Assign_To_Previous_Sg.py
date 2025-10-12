@@ -6,7 +6,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from datetime import datetime
 from Functions.Mother_func import (
     Open_CSP, Login_To_CSP, Open_Ticket, STEP_AssignToPreviousSg_1, STEP_AssignToPreviousSg_2,
-    STEP_AssignToPreviousSg_3, STEP_AssignToPreviousSg_4, Ticket_layer
+    STEP_AssignToPreviousSg_3, STEP_AssignToPreviousSg_4, STEP_AssignToPreviousSg_5, STEP_AssignToPreviousSg_6,
+    STEP_AssignToPreviousSg_7, STEP_AssignToPreviousSg_8, STEP_AssignToPreviousSg_9, STEP_AssignToPreviousSg_10, Ticket_layer
 )
 from seleniumwire import webdriver
 from Real_info.user_info import username, password
@@ -42,8 +43,14 @@ def process(Ticketnumber):
             ("Opening Ticket", lambda: Open_Ticket(DRIVER, RANDOM_T)),
             ("Check Task AssignToPreviousSg Active status (aduit layer) Step1", lambda: STEP_AssignToPreviousSg_1(DRIVER)),
             ("Check Task AssignToPreviousSg Active status (Technicals layer) Step2", lambda: STEP_AssignToPreviousSg_2(DRIVER)),
-            ("Check Task AssignToPreviousSg Active status (Analysis layer) Step3", lambda: STEP_AssignToPreviousSg_3(DRIVER)),
-            ("Check Task AssignToPreviousSg Resolved status (Feedback layer) Step4", lambda: STEP_AssignToPreviousSg_4(DRIVER))
+            ("Check Task AssignToPreviousSg Active status (aduit layer) Step3", lambda: STEP_AssignToPreviousSg_3(DRIVER)),
+            ("Check Task AssignToPreviousSg Active status (aduit layer) Step4", lambda: STEP_AssignToPreviousSg_4(DRIVER)),
+            ("Check Task AssignToPreviousSg Active status (aduit layer) Step5", lambda: STEP_AssignToPreviousSg_5(DRIVER)),
+            ("Check Task AssignToPreviousSg Active status (aduit layer) Step6", lambda: STEP_AssignToPreviousSg_6(DRIVER)),
+            ("Check Task AssignToPreviousSg Active status (Technicals layer) Step7", lambda: STEP_AssignToPreviousSg_7(DRIVER)),
+            ("Check Task AssignToPreviousSg Active status (Technicals layer) Step8", lambda: STEP_AssignToPreviousSg_8(DRIVER)),
+            ("Check Task AssignToPreviousSg Active status (Analysis layer) Step9", lambda: STEP_AssignToPreviousSg_9(DRIVER)),
+            ("Check Task AssignToPreviousSg Resolved status (Feedback layer) Step10", lambda: STEP_AssignToPreviousSg_10(DRIVER))
         ]  
         for name, func in steps:
             step_info = {"function": name, "status": "started", "layer": None, "error": None}
@@ -61,13 +68,49 @@ def process(Ticketnumber):
                     print(result)
                     step_info["layer"] = Ticket_layer(DRIVER)
                     log_data["steps"].append(step_info)
-                elif "Check Task AssignToPreviousSg Active status (Analysis layer) Step3" == name:
+                elif "Check Task AssignToPreviousSg Active status (aduit layer) Step3" == name:
                     if "Failed" in result: raise Exception(result)
                     step_info["status"] = result
                     print(result)
                     step_info["layer"] = Ticket_layer(DRIVER)
                     log_data["steps"].append(step_info)
-                elif "Check Task AssignToPreviousSg Resolved status (Feedback layer) Step4" == name:
+                elif "Check Task AssignToPreviousSg Active status (aduit layer) Step4" == name:
+                    if "Failed" in result: raise Exception(result)
+                    step_info["status"] = result
+                    print(result)
+                    step_info["layer"] = Ticket_layer(DRIVER)
+                    log_data["steps"].append(step_info)
+                elif "Check Task AssignToPreviousSg Active status (aduit layer) Step5" == name:
+                    if "Failed" in result: raise Exception(result)
+                    step_info["status"] = result
+                    print(result)
+                    step_info["layer"] = Ticket_layer(DRIVER)
+                    log_data["steps"].append(step_info)
+                elif "Check Task AssignToPreviousSg Active status (aduit layer) Step6" == name:
+                    if "Failed" in result: raise Exception(result)
+                    step_info["status"] = result
+                    print(result)
+                    step_info["layer"] = Ticket_layer(DRIVER)
+                    log_data["steps"].append(step_info)
+                elif "Check Task AssignToPreviousSg Active status (Technicals layer) Step7" == name:
+                    if "Failed" in result: raise Exception(result)
+                    step_info["status"] = result
+                    print(result)
+                    step_info["layer"] = Ticket_layer(DRIVER)
+                    log_data["steps"].append(step_info)
+                elif "Check Task AssignToPreviousSg Active status (Technicals layer) Step8" == name:
+                    if "Failed" in result: raise Exception(result)
+                    step_info["status"] = result
+                    print(result)
+                    step_info["layer"] = Ticket_layer(DRIVER)
+                    log_data["steps"].append(step_info)
+                elif "Check Task AssignToPreviousSg Active status (Analysis layer) Step9" == name:
+                    if "Failed" in result: raise Exception(result)
+                    step_info["status"] = result
+                    print(result)
+                    step_info["layer"] = Ticket_layer(DRIVER)
+                    log_data["steps"].append(step_info)
+                elif "Check Task AssignToPreviousSg Resolved status (Feedback layer) Step10" == name:
                     if "Failed" in result: raise Exception(result)
                     step_info["status"] = result
                     print(result)

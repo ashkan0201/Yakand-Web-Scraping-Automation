@@ -1,0 +1,49 @@
+{
+    "Guid": "734da702-5efc-b4b1-e8da-103256e70e06",
+    "start_time": "2025-10-11 16:37:33",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening ServiceCatalog",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Opening Request Affering",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "USER Q",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Map INFO Q",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Other Q",
+            "status": "success",
+            "error": null
+        },
+        {
+            "function": "Created Ticket with geting Ticket ID",
+            "status": "success",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "ticket_id": "14040719-00009",
+    "error": null
+}

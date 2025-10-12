@@ -1,0 +1,86 @@
+{
+    "Ticket_id": "14040719-00010",
+    "start_time": "2025-10-12 15:13:12",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step1",
+            "status": "STEP_AssignToPreviousSg_1: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (Technicals layer) Step2",
+            "status": "STEP_AssignToPreviousSg_2: Success Task AssignToPreviousSg Check Active (Technicals) status",
+            "layer": "شرکت توسکا [WG-199]",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step3",
+            "status": "STEP_AssignToPreviousSg_3: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step4",
+            "status": "STEP_AssignToPreviousSg_4: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step5",
+            "status": "STEP_AssignToPreviousSg_5: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (aduit layer) Step6",
+            "status": "STEP_AssignToPreviousSg_6: Success Task AssignToPreviousSg Check Active (aduit) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (Technicals layer) Step7",
+            "status": "STEP_AssignToPreviousSg_7: Success Task AssignToPreviousSg Check Active (Technicals) status",
+            "layer": "مشتریان ممتاز[WG-042]",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (Technicals layer) Step8",
+            "status": "STEP_AssignToPreviousSg_8: Success Task AssignToPreviousSg Check Active (Technicals) status",
+            "layer": "مشتریان ممتاز[WG-042]",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Active status (Analysis layer) Step9",
+            "status": "STEP_AssignToPreviousSg_9: Success Task AssignToPreviousSg Check Active (Analysis) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task AssignToPreviousSg Resolved status (Feedback layer) Step10",
+            "status": "STEP_AssignToPreviousSg_10: Success Task AssignToPreviousSg Check Resolved (feedback) status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}

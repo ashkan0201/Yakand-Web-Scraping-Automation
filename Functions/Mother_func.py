@@ -18,7 +18,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 def Get_Request(driver, request_name, printable=True):
     driver.wait_for_request(rf'{request_name}', timeout=20)
-    requests = [r for r in driver.requests if f"{request_name}" in r.url]
+    requests = [r for r in driver.requests if rf"{request_name}" in r.url]
     list_of_request = []
     if requests:
         for request in requests:
@@ -473,19 +473,9 @@ def taskAssignIncidentToMe(driver):
     btnAssignIncidentToMe = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="btnAssignIncidentToMe"]')))
     driver.requests.clear()
     driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnAssignIncidentToMe)
-    try:
-        driver.wait_for_request(r'/AssignIncident', timeout=20)
-        requests = [r for r in driver.requests if "/AssignIncident" in r.url]
-        Refresh_CSP(driver)
-        if requests:
-            request = requests[-1]
-            if request.response:
-                data = request.response.body.decode("utf-8")
-                json_data_Name = json.loads(data)
-                result = json_data_Name['success'] == True
-    except:
-        result = False
-    return result
+    Refresh_CSP(driver)
+    result_request = Get_Request(driver, "/AssignIncident", printable=False)
+    return result_request
 
 def set_kendo_date_super_stable(driver, date_value, input_id="newScheduledStartDate", hidden_id="_newScheduledStartDate", timeout=15, retry_interval=0.25):
     WebDriverWait(driver, timeout).until(lambda d: d.find_element(By.ID, input_id))
@@ -608,6 +598,9 @@ def wait_for_tree_items_loaded(driver, min_items=1, timeout=20):
         raise TimeoutException(f"Tree items did not load within {timeout} seconds (expected at least {min_items} items)")
 
 def expand_all_tree_nodes(driver, delay=0.2):
+    wait = WebDriverWait(driver, 20)
+    ul_element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "ul.k-group.k-treeview-group.k-treeview-lines")))
+    wait.until(lambda d: len(ul_element.find_elements(By.XPATH, "./*")) > 0)
     toggles = driver.find_elements(By.CSS_SELECTOR, "span.k-treeview-toggle, span.k-treeview-toggle .k-icon")
     clicked = 0
     for i, el in enumerate(toggles, 1):
@@ -655,8 +648,8 @@ def taskAssignToTechnicals(driver):
     btnAssignToTechnicals = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnAssignToTechnicals')))
     driver.requests.clear()
     driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnAssignToTechnicals)
-    result_request = Get_Request(driver, "/AssignToTechnicalsTeam", printable=False)
     Refresh_CSP(driver)
+    result_request = Get_Request(driver, "/AssignToTechnicalsTeam", printable=False)
     return result_request
 
 def taskChangeTTType(driver):
@@ -884,8 +877,8 @@ def taskAssignToPreviousSg(driver):
     btnAssignToPreviousSG = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="btnAssignToPreviousSG"]')))
     driver.requests.clear()
     driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnAssignToPreviousSG)
-    result_request = Get_Request(driver, "AssignToTechnicalsTeam")
     Refresh_CSP(driver)
+    result_request = Get_Request(driver, "AssignToTechnicalsTeam")
     return result_request
 
 def taskUpdateCoordinate(driver):
@@ -1932,9 +1925,9 @@ def STEP_AssignToAudit_4(driver):
 
 def STEP_AssignToPreviousSg_1(driver): # last layer = aduit
     # Start checking task number 1
-    # if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    # if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    # if taskPark(driver) == False: return "STEP_AssignToPreviousSg_1 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskPark(driver) == False: return "STEP_AssignToPreviousSg_1 Failed: Request Step wrong!, Function: taskPark"
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
@@ -1949,7 +1942,9 @@ def STEP_AssignToPreviousSg_1(driver): # last layer = aduit
     if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_1 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="AssignToPreviousSg")
     if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_1: Success Task AssignToPreviousSg Check Active (aduit) status"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_1 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
 
 def STEP_AssignToPreviousSg_2(driver): # last layer = IT
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
@@ -1959,8 +1954,10 @@ def STEP_AssignToPreviousSg_2(driver): # last layer = IT
     result_request = taskAssignToPreviousSg(driver) # return true
     if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
-    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_2: Success Task AssignToPreviousSg Check Active (aduit) status"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_2 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
+    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_2: Success Task AssignToPreviousSg Check Active (Technicals) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
     # Finish checked task number 2
 
 def STEP_AssignToPreviousSg_3(driver): # last layer = aduit
@@ -1972,7 +1969,9 @@ def STEP_AssignToPreviousSg_3(driver): # last layer = aduit
     if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="AssignToPreviousSg")
     if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_3: Success Task AssignToPreviousSg Check Active (aduit) status"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_3 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
 
 def STEP_AssignToPreviousSg_4(driver): # last layer = aduit
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
@@ -1987,7 +1986,9 @@ def STEP_AssignToPreviousSg_4(driver): # last layer = aduit
     if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="AssignToPreviousSg")
     if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_4: Success Task AssignToPreviousSg Check Active (aduit) status"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_4 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
 
 def STEP_AssignToPreviousSg_5(driver): # last layer = aduit
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
@@ -1997,89 +1998,108 @@ def STEP_AssignToPreviousSg_5(driver): # last layer = aduit
     result_request = taskAssignToPreviousSg(driver) # return false
     if result_request[-1]["success"] == True: return "STEP_AssignToPreviousSg_5 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="ممیزی", taskName="AssignToPreviousSg")
-    # Finish checking task number 3
     if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_5: Success Task AssignToPreviousSg Check Active (aduit) status"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_5 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+    # Finish checking task number 3
 
-def STEP_AssignToPreviousSg_6(driver):
-    if taskAssignToTechnicals(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+def STEP_AssignToPreviousSg_6(driver): # last layer = aduit
+    # Start checking task number 1
+    if taskAssignToTechnicals(driver) == False: return "STEP_AssignToPreviousSg_6 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    if taskPark(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskPark"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskPark(driver) == False: return "STEP_AssignToPreviousSg_6 Failed: Request Step wrong!, Function: taskPark"
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    result_task = taskAssignToPreviousSg(driver)
-    if result_task == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToPreviousSg" 
+    result_request = taskAssignToPreviousSg(driver) # return true
+    if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_6 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="AssignToPreviousSg")
+    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_6: Success Task AssignToPreviousSg Check Active (aduit) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+    # Finish checking task number 1
+
+def STEP_AssignToPreviousSg_7(driver): # last layer = IT
+    # Start checking task number 2
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_2 - 0.1 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_7 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    if taskAssignToTechnicals(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    if taskAssignToTechnicals(driver) == False: return "STEP_AssignToPreviousSg_7 Failed: Request Step wrong!, Function: taskAssignToTechnicals" 
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_7 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_7 Failed: Request Step wrong!, Function: taskSendToAnalysis" 
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_7 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="تحلیل", taskName="AssignToPreviousSg")
-    result_task = taskAssignToPreviousSg(driver)
+    if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
+    result_request = taskAssignToPreviousSg(driver) # return true
+    if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_7 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee="کارتابل گروهی", support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
-    if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_2 - 0.2 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
-    result_task = taskAssignToPreviousSg(driver) 
-    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
-    if "Failed" in result_B or "Failed" in result_A: return "STEP_AssignToPreviousSg_2 - 0-3 Failed: Task AssignToPreviousSg Conditions Error., Function: taskAssignToPreviousSg"
-    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_2: Success Task AssignToPreviousSg Check Active (technicals) status"
+    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_7: Success Task AssignToPreviousSg Check Active (Technicals) status"
     else:
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
 
-def STEP_AssignToPreviousSg_7(driver):
-    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"    
+def STEP_AssignToPreviousSg_8(driver): # last layer = IT
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_8 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
+    if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
+    result_request = taskAssignToPreviousSg(driver) # return flase
+    if result_request[-1]["success"] == True: return "STEP_AssignToPreviousSg_8 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
+    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_8: Success Task AssignToPreviousSg Check Active (Technicals) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+    # Finish checking task number 2
+
+def STEP_AssignToPreviousSg_9(driver): # last layer = Analysis
+    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_9 Failed: Request Step wrong!, Function: taskSendToAnalysis"    
+    if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_9 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="تحلیل", taskName="AssignToPreviousSg")
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    result_task = taskAssignToPreviousSg(driver)
-    if result_task == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskAssignToPreviousSg" 
+    result_request = taskAssignToPreviousSg(driver) # return true
+    if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_9 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_9 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"    
+    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_9 Failed: Request Step wrong!, Function: taskSendToAnalysis"    
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_9 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_3: Success Task AssignToPreviousSg Check Active (analysis) status"
+    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_9: Success Task AssignToPreviousSg Check Active (Analysis) status"
     else:
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
 
-def STEP_AssignToPreviousSg_8(driver):
-    if taskSendToFeedback(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskSendToFeedback"
+def STEP_AssignToPreviousSg_10(driver): # last layer = Feedback
+    if taskSendToFeedback(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskSendToFeedback"
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="حل شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="AssignToPreviousSg")
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    result_task = taskAssignToPreviousSg(driver)
-    if result_task == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskAssignToPreviousSg" 
+    result_request = taskAssignToPreviousSg(driver) # return true
+    if result_request[-1]["success"] == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AssignToPreviousSg")
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskSendToAnalysis"    
+    if taskSendToAnalysis(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskSendToAnalysis"    
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    if taskSendToFeedback(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if taskSendToFeedback(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskSendToFeedback"
     if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task AssignToPreviousSg button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AssignToPreviousSg_10 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_should_exist_Tasks(driver, "taskAssignToPreviousSg") == False: return "Failed: Task AssignToPreviousSg button should exist but not found"
-    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_4: Success Task AssignToPreviousSg Check Resolved (feedback) status"
+    if "Success" in result_B and "Success" in result_A: return "STEP_AssignToPreviousSg_10: Success Task AssignToPreviousSg Check Resolved (feedback) status"
     else:
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
@@ -2124,13 +2144,9 @@ def STEP_taskCloseIncident_4(driver):
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
 
-driver = webdriver.Firefox()
-driver.maximize_window()
-Open_CSP(driver)
-Login_To_CSP(driver, username, password)
-Open_Ticket(driver, "14040719-00004")
-print(STEP_AssignToPreviousSg_1(driver))
-print(STEP_AssignToPreviousSg_2(driver))
-print(STEP_AssignToPreviousSg_3(driver))
-print(STEP_AssignToPreviousSg_4(driver))
-print(STEP_AssignToPreviousSg_5(driver))
+# driver = webdriver.Firefox()
+# driver.maximize_window()
+# Open_CSP(driver)
+# Login_To_CSP(driver, username, password)
+# Open_Ticket(driver, "14040719-00011")
+
