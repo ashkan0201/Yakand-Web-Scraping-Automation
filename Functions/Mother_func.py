@@ -2298,6 +2298,7 @@ def STEP_CloseIncident_4(driver):
     result_task = taskCloseIncident(driver)
     if result_task == False: return "STEP_CloseIncident_4 Failed: Request Step wrong!, Function: taskCloseIncident" 
     result_A = Check_Befor_After_Task_Status(driver, status="بسته شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="CloseIncident")
+    if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
     if "Success" in result_B and "Success" in result_A: return "STEP_CloseIncident_4: Success Task CloseIncident Check Resolved (feedback) status"
     else:
         if "Failed" in result_B: return result_B
@@ -2320,7 +2321,7 @@ def STEP_WrongAssignTechnicals_2(driver): # layer = aduit
     result_request = taskWrongAssignTechnicals(driver, layer=1) # return true
     if result_request[-1]["success"] == False and map_[-1] == "ممیزی": return "STEP_WrongAssignTechnicals_2 Failed: Request Step wrong!, Function: taskWrongAssignTechnicals"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="WrongAssignTechnicals")
-    if "Success" in result_B and "Success" in result_A: return "STEP_WrongAssignTechnicals_2: Success Task CloseIncident Check Resolved (aduit) status"
+    if "Success" in result_B and "Success" in result_A: return "STEP_WrongAssignTechnicals_2: Success Task WrongAssignTechnicals Check Resolved (aduit) status"
     else:
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
@@ -2336,7 +2337,7 @@ def STEP_WrongAssignTechnicals_3(driver): # layer = IT
     result_request, name_of_layer = taskWrongAssignTechnicals(driver, layer=2) # return true
     if result_request[-1]["success"] == False and map_[-1] == name_of_layer: return "STEP_WrongAssignTechnicals_3 Failed: Request Step wrong!, Function: taskWrongAssignTechnicals"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="WrongAssignTechnicals")
-    if "Success" in result_B and "Success" in result_A: return "STEP_WrongAssignTechnicals_3: Success Task CloseIncident Check Resolved (technicals) status"
+    if "Success" in result_B and "Success" in result_A: return "STEP_WrongAssignTechnicals_3: Success Task WrongAssignTechnicals Check Resolved (technicals) status"
     else:
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
@@ -2362,11 +2363,80 @@ def STEP_WrongAssignTechnicals_6(driver): # layer = feedback
     if taskSendToFeedback(driver) == False: return "STEP_WrongAssignTechnicals_6 Failed: Request Step wrong!, Function: taskSendToFeedback"
     if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
     return "STEP_WrongAssignTechnicals_6: Success Task WrongAssignTechnicals button not should exist in Active status"
+
+def STEP_AnalysisRevert_1(driver): # layer = aduit
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskPark(driver) == False: return "STEP_AnalysisRevert_1 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_AnalysisRevert_1: Success Task AnalysisRevert button not should exist in Active status"
+
+def STEP_AnalysisRevert_2(driver): # layer = technicals
+    if taskAssignToTechnicals(driver) == False: return "STEP_AnalysisRevert_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskPark(driver) == False: return "STEP_AnalysisRevert_2 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_AnalysisRevert_2: Success Task AnalysisRevert button not should exist in Active status"
+
+def STEP_AnalysisRevert_3(driver): # layer analysis to aduit
+    if taskSendToAnalysis(driver) == False: return "STEP_AnalysisRevert_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="تحلیل", taskName="AnalysisRevert")
+    if check_should_exist_Tasks(driver, "AnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
+    result_request = taskAnalysisRevert(driver, layer=1) # return true
+    if result_request[-1]["success"] == False: return "STEP_AnalysisRevert_3 Failed: Request Step wrong!, Function: taskAnalysisRevert"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="AnalysisRevert")
+    if "Success" in result_B and "Success" in result_A: return "STEP_AnalysisRevert_3: Success Task AnalysisRevert Check Resolved (Analysis) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
+def STEP_AnalysisRevert_4(driver): # layer analysis to technicals
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskSendToAnalysis(driver) == False: return "STEP_AnalysisRevert_4 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="تحلیل", taskName="AnalysisRevert")
+    if check_should_exist_Tasks(driver, "AnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
+    result_request = taskAnalysisRevert(driver, layer=2) # return true
+    if result_request[-1]["success"] == False: return "STEP_AnalysisRevert_4 Failed: Request Step wrong!, Function: taskAnalysisRevert"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AnalysisRevert")
+    if "Success" in result_B and "Success" in result_A: return "STEP_AnalysisRevert_4: Success Task AnalysisRevert Check Resolved (Analysis) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
+def STEP_AnalysisRevert_5(driver): # layer = feedback
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskSendToAnalysis(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_should_exist_Tasks(driver, "AnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
+    if taskSendToFeedback(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
+    return "STEP_AnalysisRevert_5: Success Task AnalysisRevert button not should exist in Active status"
 
 driver = webdriver.Firefox()
 driver.maximize_window()
 Open_CSP(driver)
 Login_To_CSP(driver, username, password)
-Open_Ticket(driver, "14040719-00003")
-print(taskAnalysisRevert(driver, layer=2))
+Open_Ticket(driver, "14040719-00008")
+print(STEP_AnalysisRevert_1(driver))
+print(STEP_AnalysisRevert_2(driver))
+print(STEP_AnalysisRevert_3(driver))
+print(STEP_AnalysisRevert_4(driver))
+print(STEP_AnalysisRevert_5(driver))
