@@ -1059,7 +1059,7 @@ def taskWrongAssignTechnicals(driver, layer):
         driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnWrongAssignToTechnicals)
         Refresh_CSP(driver)
         result_request = Get_Request(driver, "/WrongAssignTechnicalsTeam", printable=True)
-        return result_request
+        return result_request, chosen_group
 
 def STEP_Assigntome_1(driver):
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee="کارتابل گروهی", support_group="ممیزی", taskName="Assigntome")
@@ -2160,48 +2160,113 @@ def STEP_AssignToPreviousSg_10(driver): # last layer = Feedback
 
 def STEP_CloseIncident_1(driver):
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CloseIncident_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskPark(driver) == False: return "STEP_taskCloseIncident_1 Failed: Request Step wrong!, Function: taskPark"
-    if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    return "STEP_taskCloseIncident_1: Success Task CloseIncident button not should exist in Active status"
+    if taskPark(driver) == False: return "STEP_CloseIncident_1 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CloseIncident_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_CloseIncident_1: Success Task CloseIncident button not should exist in Active status"
 
 def STEP_CloseIncident_2(driver):
-    if taskAssignToTechnicals(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    if taskAssignToTechnicals(driver) == False: return "STEP_CloseIncident_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CloseIncident_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskPark(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskPark"
-    if check_not_should_exist_Tasks(driver, "taskAssignToPreviousSg"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    return "STEP_taskCloseIncident_2: Success Task CloseIncident button not should exist in Active status"
+    if taskPark(driver) == False: return "STEP_CloseIncident_2 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CloseIncident_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_CloseIncident_2: Success Task CloseIncident button not should exist in Active status"
 
 def STEP_CloseIncident_3(driver):
-    if taskSendToAnalysis(driver) == False: return "STEP_taskCloseIncident_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if taskSendToAnalysis(driver) == False: return "STEP_CloseIncident_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CloseIncident_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    return "STEP_taskCloseIncident_3: Success Task CloseIncident button not should exist in Active status"
+    return "STEP_CloseIncident_3: Success Task CloseIncident button not should exist in Active status"
 
 def STEP_CloseIncident_4(driver):
-    if taskSendToFeedback(driver) == False: return "STEP_taskCloseIncident_4 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if taskSendToFeedback(driver) == False: return "STEP_CloseIncident_4 Failed: Request Step wrong!, Function: taskSendToFeedback"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
-    if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CloseIncident_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="حل شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="CloseIncident")
     if check_should_exist_Tasks(driver, "taskCloseIncident") == False: return "Failed: Task CloseIncident button should exist but not found"
     result_task = taskCloseIncident(driver)
-    if result_task == False: return "STEP_taskCloseIncident_4 Failed: Request Step wrong!, Function: taskCloseIncident" 
+    if result_task == False: return "STEP_CloseIncident_4 Failed: Request Step wrong!, Function: taskCloseIncident" 
     result_A = Check_Befor_After_Task_Status(driver, status="بسته شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="CloseIncident")
-    if "Success" in result_B and "Success" in result_A: return "STEP_taskCloseIncident_4: Success Task CloseIncident Check Resolved (feedback) status"
+    if "Success" in result_B and "Success" in result_A: return "STEP_CloseIncident_4: Success Task CloseIncident Check Resolved (feedback) status"
     else:
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
+
+def STEP_WrongAssignTechnicals_1(driver): # layer = aduit
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskPark(driver) == False: return "STEP_WrongAssignTechnicals_1 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_WrongAssignTechnicals_1: Success Task WrongAssignTechnicals button not should exist in Active status"
+
+def STEP_WrongAssignTechnicals_2(driver): # layer = aduit
+    map_ = check_layer_map(driver)
+    if taskAssignToTechnicals(driver) == False: return "STEP_WrongAssignTechnicals_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="WrongAssignTechnicals")
+    if check_should_exist_Tasks(driver, "taskWrongAssignTechnicals") == False: return "Failed: Task WrongAssignTechnicals button should exist but not found"
+    result_request = taskWrongAssignTechnicals(driver, layer=1) # return true
+    if result_request[-1]["success"] == False and map_[-1] == "ممیزی": return "STEP_WrongAssignTechnicals_2 Failed: Request Step wrong!, Function: taskWrongAssignTechnicals"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="WrongAssignTechnicals")
+    if "Success" in result_B and "Success" in result_A: return "STEP_WrongAssignTechnicals_2: Success Task CloseIncident Check Resolved (aduit) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+    
+def STEP_WrongAssignTechnicals_3(driver): # layer = IT
+    map_ = check_layer_map(driver)
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignToTechnicals(driver) == False: return "STEP_WrongAssignTechnicals_3 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="WrongAssignTechnicals")
+    if check_should_exist_Tasks(driver, "taskWrongAssignTechnicals") == False: return "Failed: Task WrongAssignTechnicals button should exist but not found"
+    result_request, name_of_layer = taskWrongAssignTechnicals(driver, layer=2) # return true
+    if result_request[-1]["success"] == False and map_[-1] == name_of_layer: return "STEP_WrongAssignTechnicals_3 Failed: Request Step wrong!, Function: taskWrongAssignTechnicals"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="WrongAssignTechnicals")
+    if "Success" in result_B and "Success" in result_A: return "STEP_WrongAssignTechnicals_3: Success Task CloseIncident Check Resolved (technicals) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
+def STEP_WrongAssignTechnicals_4(driver): # layer = IT
+    if check_should_exist_Tasks(driver, "taskWrongAssignTechnicals") == False: return "Failed: Task WrongAssignTechnicals button should exist but not found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskPark(driver) == False: return "STEP_WrongAssignTechnicals_4 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_WrongAssignTechnicals_4: Success Task WrongAssignTechnicals button not should exist in Active status"
+
+def STEP_WrongAssignTechnicals_5(driver): # layer =analysis
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskSendToAnalysis(driver) == False: return "STEP_WrongAssignTechnicals_5 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_WrongAssignTechnicals_5: Success Task WrongAssignTechnicals button not should exist in Active status"
+
+def STEP_WrongAssignTechnicals_6(driver): # layer = feedback
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskSendToFeedback(driver) == False: return "STEP_WrongAssignTechnicals_6 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTechnicals"): return "Failed: Task WrongAssignTechnicals button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_WrongAssignTechnicals_6: Success Task WrongAssignTechnicals button not should exist in Active status"
 
 driver = webdriver.Firefox()
 driver.maximize_window()
 Open_CSP(driver)
 Login_To_CSP(driver, username, password)
-Open_Ticket(driver, "14040719-00010")
-print(taskWrongAssignTechnicals(driver, layer=2))
-print(taskWrongAssignTechnicals(driver, layer=1))
+Open_Ticket(driver, "14040719-00009")
+print(STEP_WrongAssignTechnicals_1(driver))
+print(STEP_WrongAssignTechnicals_2(driver))
+print(STEP_WrongAssignTechnicals_3(driver))
+print(STEP_WrongAssignTechnicals_4(driver))
+print(STEP_WrongAssignTechnicals_5(driver))
+print(STEP_WrongAssignTechnicals_6(driver))
