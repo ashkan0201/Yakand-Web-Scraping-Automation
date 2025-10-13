@@ -2158,7 +2158,7 @@ def STEP_AssignToPreviousSg_10(driver): # last layer = Feedback
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
 
-def STEP_taskCloseIncident_1(driver):
+def STEP_CloseIncident_1(driver):
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
@@ -2167,7 +2167,7 @@ def STEP_taskCloseIncident_1(driver):
     if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     return "STEP_taskCloseIncident_1: Success Task CloseIncident button not should exist in Active status"
 
-def STEP_taskCloseIncident_2(driver):
+def STEP_CloseIncident_2(driver):
     if taskAssignToTechnicals(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
@@ -2177,14 +2177,14 @@ def STEP_taskCloseIncident_2(driver):
     if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     return "STEP_taskCloseIncident_2: Success Task CloseIncident button not should exist in Active status"
 
-def STEP_taskCloseIncident_3(driver):
+def STEP_CloseIncident_3(driver):
     if taskSendToAnalysis(driver) == False: return "STEP_taskCloseIncident_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
     return "STEP_taskCloseIncident_3: Success Task CloseIncident button not should exist in Active status"
 
-def STEP_taskCloseIncident_4(driver):
+def STEP_CloseIncident_4(driver):
     if taskSendToFeedback(driver) == False: return "STEP_taskCloseIncident_4 Failed: Request Step wrong!, Function: taskSendToFeedback"
     if check_not_should_exist_Tasks(driver, "taskCloseIncident"): return "Failed: Task CloseIncident button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_taskCloseIncident_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"

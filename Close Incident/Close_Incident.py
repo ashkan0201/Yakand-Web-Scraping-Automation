@@ -5,8 +5,8 @@ import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from datetime import datetime
 from Functions.Mother_func import (
-    Open_CSP, Login_To_CSP, Open_Ticket, STEP_taskCloseIncident_1, STEP_taskCloseIncident_2,
-    STEP_taskCloseIncident_3, STEP_taskCloseIncident_4, Ticket_layer
+    Open_CSP, Login_To_CSP, Open_Ticket, STEP_CloseIncident_1, STEP_CloseIncident_2,
+    STEP_CloseIncident_3, STEP_CloseIncident_4, Ticket_layer
 )
 from seleniumwire import webdriver
 from Real_info.user_info import username, password
@@ -40,10 +40,10 @@ def process(Ticketnumber):
             ("Opening CSP", lambda: Open_CSP(DRIVER)),
             ("Login to CSP", lambda: Login_To_CSP(DRIVER, username, password)),
             ("Opening Ticket", lambda: Open_Ticket(DRIVER, RANDOM_T)),
-            ("Check Task CloseIncident button not should exist in Active,Pending Status (Audit layer) Step1", lambda: STEP_taskCloseIncident_1(DRIVER)),
-            ("Check Task CloseIncident button not should exist in Active,Pending Status (Technicals layer) Step2", lambda: STEP_taskCloseIncident_2(DRIVER)),
-            ("Check Task CloseIncident button not should exist in Active Status (Analysis layer) Step3", lambda: STEP_taskCloseIncident_3(DRIVER)),
-            ("Check Task CloseIncident Resolved Status (Feedback layer) Step4", lambda: STEP_taskCloseIncident_4(DRIVER))
+            ("Check Task CloseIncident button not should exist in Active,Pending Status (Audit layer) Step1", lambda: STEP_CloseIncident_1(DRIVER)),
+            ("Check Task CloseIncident button not should exist in Active,Pending Status (Technicals layer) Step2", lambda: STEP_CloseIncident_2(DRIVER)),
+            ("Check Task CloseIncident button not should exist in Active Status (Analysis layer) Step3", lambda: STEP_CloseIncident_3(DRIVER)),
+            ("Check Task CloseIncident Resolved Status (Feedback layer) Step4", lambda: STEP_CloseIncident_4(DRIVER))
         ]
         for name, func in steps:
             step_info = {"function": name, "status": "started", "layer": None, "error": None}
