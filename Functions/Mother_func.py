@@ -1061,6 +1061,111 @@ def taskWrongAssignTechnicals(driver, layer):
         result_request = Get_Request(driver, "/WrongAssignTechnicalsTeam", printable=True)
         return result_request, chosen_group
 
+def taskWrongAssignTechnicals(driver, layer):
+    map_ = check_layer_map(driver)
+    def wait_click(by, value, timeout=20):
+        elem = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, value)))
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", elem)
+        return elem
+    def wait_find(by, value, timeout=20):
+        return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
+    wait_click(By.ID, 'taskWrongAssignTechnicals')
+    if layer == 1:
+        print(f"[INFO] انتخاب گروه: ممیزی")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmAssignToTechnicals']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//span[normalize-space(text())='ممیزی']")))
+        driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "assignTechnichalAnalystOpinionText")
+        opinion_box.send_keys("Test with Python")
+        btnWrongAssignToTechnicals = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnWrongAssignToTechnicals')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnWrongAssignToTechnicals)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/WrongAssignTechnicalsTeam", printable=True)
+        return result_request
+    elif layer == 2:
+        driver.wait_for_request(r'/GetEnumsWrongAssign', timeout=20)
+        reqs = [r for r in driver.requests if "/GetEnumsWrongAssign" in r.url]
+        if not reqs:
+            raise Exception("هیچ درخواست /GetEnumsWrongAssign پیدا نشد")
+        data = reqs[-1].response.body.decode("utf-8")
+        for layer2 in json.loads(data):
+            if layer2["Name"] == "لایه 2":
+                groups = [Name["Name"] for Sub_Name in layer2["Children"] for Name in Sub_Name["Children"]]
+        if not groups:
+            raise Exception("هیچ گروه پشتیبانی‌ای یافت نشد")
+        random.shuffle(groups)
+        chosen_group = random.choice(groups)
+        if map_[-1] == chosen_group:
+            chosen_group = random.choice(groups)
+        print(f"[INFO] انتخاب گروه: {chosen_group}")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmAssignToTechnicals']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        opened = expand_all_tree_nodes(driver)
+        if opened:
+            group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//*[normalize-space(text())='{chosen_group}']")))
+            driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "assignTechnichalAnalystOpinionText")
+        opinion_box.send_keys("Test with Python")
+        btnWrongAssignToTechnicals = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnWrongAssignToTechnicals')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnWrongAssignToTechnicals)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/WrongAssignTechnicalsTeam", printable=True)
+        return result_request, chosen_group
+
+def taskAnalysisRevert(driver, layer):
+    def wait_click(by, value, timeout=20):
+        elem = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, value)))
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", elem)
+        return elem
+    def wait_find(by, value, timeout=20):
+        return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
+    wait_click(By.ID, 'taskAnalysisRevert')
+    if layer == 1:
+        print(f"[INFO] انتخاب گروه: ممیزی")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmRevertFeedback']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//span[normalize-space(text())='ممیزی']")))
+        driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "RevertComment")
+        opinion_box.send_keys("Test with Python")
+        btnRevertFeedback = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnRevertFeedback')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnRevertFeedback)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/RevertFromAnalysis", printable=True)
+        return result_request
+    elif layer == 2:
+        driver.wait_for_request(r'/GetEnumsReferIncident', timeout=20)
+        reqs = [r for r in driver.requests if "/GetEnumsReferIncident" in r.url]
+        if not reqs:
+            raise Exception("هیچ درخواست /GetEnumsReferIncident پیدا نشد")
+        data = reqs[-1].response.body.decode("utf-8")
+        for layer2 in json.loads(data):
+            if layer2["Name"] == "لایه 2":
+                groups = [Name["Name"] for Sub_Name in layer2["Children"] for Name in Sub_Name["Children"]]
+        if not groups:
+            raise Exception("هیچ گروه پشتیبانی‌ای یافت نشد")
+        random.shuffle(groups)
+        chosen_group = random.choice(groups)
+        print(f"[INFO] انتخاب گروه: {chosen_group}")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmRevertFeedback']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        opened = expand_all_tree_nodes(driver)
+        if opened:
+            group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//*[normalize-space(text())='{chosen_group}']")))
+            driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "RevertComment")
+        opinion_box.send_keys("Test with Python")
+        btnRevertFeedback = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnRevertFeedback')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnRevertFeedback)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/RevertFromAnalysis", printable=True)
+        return result_request
+
 def STEP_Assigntome_1(driver):
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee="کارتابل گروهی", support_group="ممیزی", taskName="Assigntome")
     if check_should_exist_Tasks(driver, "taskAssignIncidentToMe") == False: return "Failed: Task ReleaseIncident button should exist but not found"
@@ -2259,14 +2364,9 @@ def STEP_WrongAssignTechnicals_6(driver): # layer = feedback
     if taskAssignIncidentToMe(driver) == False: return "STEP_WrongAssignTechnicals_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     return "STEP_WrongAssignTechnicals_6: Success Task WrongAssignTechnicals button not should exist in Active status"
 
-# driver = webdriver.Firefox()
-# driver.maximize_window()
-# Open_CSP(driver)
-# Login_To_CSP(driver, username, password)
-# Open_Ticket(driver, "14040719-00009")
-# print(STEP_WrongAssignTechnicals_1(driver))
-# print(STEP_WrongAssignTechnicals_2(driver))
-# print(STEP_WrongAssignTechnicals_3(driver))
-# print(STEP_WrongAssignTechnicals_4(driver))
-# print(STEP_WrongAssignTechnicals_5(driver))
-# print(STEP_WrongAssignTechnicals_6(driver))
+driver = webdriver.Firefox()
+driver.maximize_window()
+Open_CSP(driver)
+Login_To_CSP(driver, username, password)
+Open_Ticket(driver, "14040719-00003")
+print(taskAnalysisRevert(driver, layer=2))
