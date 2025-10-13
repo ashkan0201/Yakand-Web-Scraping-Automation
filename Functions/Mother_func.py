@@ -615,7 +615,7 @@ def expand_all_tree_nodes(driver, delay=0.2):
     print(f"[INFO] تعداد کلیک موفق: {clicked}/{len(toggles)}")
     return result
 
-def taskAssignToTechnicals(driver):
+def taskAssignToTechnicals(driver): 
     map_ = check_layer_map(driver)
     def wait_click(by, value, timeout=20):
         elem = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, value)))
@@ -1006,6 +1006,60 @@ def taskCloseIncident(driver):
     except:
         result = False
     return result
+
+def taskWrongAssignTechnicals(driver, layer):
+    map_ = check_layer_map(driver)
+    def wait_click(by, value, timeout=20):
+        elem = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, value)))
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", elem)
+        return elem
+    def wait_find(by, value, timeout=20):
+        return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
+    wait_click(By.ID, 'taskWrongAssignTechnicals')
+    if layer == 1:
+        print(f"[INFO] انتخاب گروه: ممیزی")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmAssignToTechnicals']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//span[normalize-space(text())='ممیزی']")))
+        driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "assignTechnichalAnalystOpinionText")
+        opinion_box.send_keys("Test with Python")
+        btnWrongAssignToTechnicals = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnWrongAssignToTechnicals')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnWrongAssignToTechnicals)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/WrongAssignTechnicalsTeam", printable=True)
+        return result_request
+    elif layer == 2:
+        driver.wait_for_request(r'/GetEnumsWrongAssign', timeout=20)
+        reqs = [r for r in driver.requests if "/GetEnumsWrongAssign" in r.url]
+        if not reqs:
+            raise Exception("هیچ درخواست /GetEnumsWrongAssign پیدا نشد")
+        data = reqs[-1].response.body.decode("utf-8")
+        for layer2 in json.loads(data):
+            if layer2["Name"] == "لایه 2":
+                groups = [Name["Name"] for Sub_Name in layer2["Children"] for Name in Sub_Name["Children"]]
+        if not groups:
+            raise Exception("هیچ گروه پشتیبانی‌ای یافت نشد")
+        random.shuffle(groups)
+        chosen_group = random.choice(groups)
+        if map_[-1] == chosen_group:
+            chosen_group = random.choice(groups)
+        print(f"[INFO] انتخاب گروه: {chosen_group}")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmAssignToTechnicals']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        opened = expand_all_tree_nodes(driver)
+        if opened:
+            group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//*[normalize-space(text())='{chosen_group}']")))
+            driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "assignTechnichalAnalystOpinionText")
+        opinion_box.send_keys("Test with Python")
+        btnWrongAssignToTechnicals = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnWrongAssignToTechnicals')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnWrongAssignToTechnicals)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/WrongAssignTechnicalsTeam", printable=True)
+        return result_request
 
 def STEP_Assigntome_1(driver):
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee="کارتابل گروهی", support_group="ممیزی", taskName="Assigntome")
@@ -2144,9 +2198,10 @@ def STEP_taskCloseIncident_4(driver):
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
 
-# driver = webdriver.Firefox()
-# driver.maximize_window()
-# Open_CSP(driver)
-# Login_To_CSP(driver, username, password)
-# Open_Ticket(driver, "14040719-00011")
-
+driver = webdriver.Firefox()
+driver.maximize_window()
+Open_CSP(driver)
+Login_To_CSP(driver, username, password)
+Open_Ticket(driver, "14040719-00010")
+print(taskWrongAssignTechnicals(driver, layer=2))
+print(taskWrongAssignTechnicals(driver, layer=1))
