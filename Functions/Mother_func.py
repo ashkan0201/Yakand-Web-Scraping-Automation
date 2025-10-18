@@ -1166,6 +1166,71 @@ def taskAnalysisRevert(driver, layer):
         result_request = Get_Request(driver, "/RevertFromAnalysis", printable=True)
         return result_request
 
+def taskFeedbackRevert(driver, layer):
+    def wait_click(by, value, timeout=20):
+        elem = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, value)))
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", elem)
+        return elem
+    def wait_find(by, value, timeout=20):
+        return WebDriverWait(driver, timeout).until(EC.presence_of_element_located((by, value)))
+    wait_click(By.ID, 'taskFeedbackRevert')
+    if layer == 1:
+        print(f"[INFO] انتخاب گروه: ممیزی")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmRevertFeedback']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//span[normalize-space(text())='ممیزی']")))
+        driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "RevertComment")
+        opinion_box.send_keys("Test with Python")
+        btnRevertFeedback = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnRevertFeedback')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnRevertFeedback)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/RevertFromFeedback", printable=True)
+        return result_request
+    elif layer == 2:
+        driver.wait_for_request(r'/GetEnumsReferIncident', timeout=20)
+        reqs = [r for r in driver.requests if "/GetEnumsReferIncident" in r.url]
+        if not reqs:
+            raise Exception("هیچ درخواست /GetEnumsReferIncident پیدا نشد")
+        data = reqs[-1].response.body.decode("utf-8")
+        for layer2 in json.loads(data):
+            if layer2["Name"] == "لایه 2":
+                groups = [Name["Name"] for Sub_Name in layer2["Children"] for Name in Sub_Name["Children"]]
+        if not groups:
+            raise Exception("هیچ گروه پشتیبانی‌ای یافت نشد")
+        random.shuffle(groups)
+        chosen_group = random.choice(groups)
+        print(f"[INFO] انتخاب گروه: {chosen_group}")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmRevertFeedback']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        opened = expand_all_tree_nodes(driver)
+        if opened:
+            group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//*[normalize-space(text())='{chosen_group}']")))
+            driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "RevertComment")
+        opinion_box.send_keys("Test with Python")
+        btnRevertFeedback = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnRevertFeedback')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnRevertFeedback)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/RevertFromFeedback", printable=True)
+        return result_request
+    elif layer == 3:
+        print(f"[INFO] انتخاب گروه: تحلیل")
+        dropdown = wait_find(By.XPATH, "//div[@id='frmRevertFeedback']//span[contains(@class,'k-dropdowntree')]")
+        driver.execute_script("arguments[0].click();", dropdown)
+        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//span[normalize-space(text())='تحلیل']")))
+        driver.execute_script("arguments[0].click();", group_elem)
+        opinion_box = wait_find(By.ID, "RevertComment")
+        opinion_box.send_keys("Test with Python")
+        btnRevertFeedback = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnRevertFeedback')))
+        driver.requests.clear()
+        driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnRevertFeedback)
+        Refresh_CSP(driver)
+        result_request = Get_Request(driver, "/RevertFromFeedback", printable=True)
+        return result_request
+
 def STEP_Assigntome_1(driver):
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee="کارتابل گروهی", support_group="ممیزی", taskName="Assigntome")
     if check_should_exist_Tasks(driver, "taskAssignIncidentToMe") == False: return "Failed: Task ReleaseIncident button should exist but not found"
@@ -2430,13 +2495,107 @@ def STEP_AnalysisRevert_5(driver): # layer = feedback
     if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
     return "STEP_AnalysisRevert_5: Success Task AnalysisRevert button not should exist in Active status"
 
+def STEP_FeedbackRevert_1(driver): # layer = aduit
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskPark(driver) == False: return "STEP_FeedbackRevert_1 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_FeedbackRevert_1: Success Task FeedbackRevert button not should exist in Active status"
+
+def STEP_FeedbackRevert_2(driver): # layer = technicals
+    if taskAssignToTechnicals(driver) == False: return "STEP_FeedbackRevert_2 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskPark(driver) == False: return "STEP_FeedbackRevert_2 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_FeedbackRevert_2: Success Task FeedbackRevert button not should exist in Active status"
+
+def STEP_FeedbackRevert_3(driver): # layer = analysis
+    if taskSendToAnalysis(driver) == False: return "STEP_FeedbackRevert_3 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    return "STEP_FeedbackRevert_3: Success Task FeedbackRevert button not should exist in Active status"
+
+def STEP_FeedbackRevert_4(driver): # layer = aduit
+    if taskSendToFeedback(driver) == False: return "STEP_FeedbackRevert_4 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="حل شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="FeedbackRevert")
+    if check_should_exist_Tasks(driver, "taskFeedbackRevert") == False: return "Failed: Task FeedbackRevert button should exist but not found"
+    result_request = taskFeedbackRevert(driver, layer=1) # return true
+    if result_request[-1]["success"] == False: return "STEP_FeedbackRevert_4 Failed: Request Step wrong!, Function: taskFeedbackRevert"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="FeedbackRevert")
+    if "Success" in result_B and "Success" in result_A: return "STEP_FeedbackRevert_4: Success Task FeedbackRevert Check Resolved (Feedback) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
+def STEP_FeedbackRevert_5(driver): # layer = technicals
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskSendToAnalysis(driver) == False: return "STEP_FeedbackRevert_5 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskSendToFeedback(driver) == False: return "STEP_FeedbackRevert_5 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="حل شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="FeedbackRevert")
+    if check_should_exist_Tasks(driver, "taskFeedbackRevert") == False: return "Failed: Task FeedbackRevert button should exist but not found"
+    result_request = taskFeedbackRevert(driver, layer=2) # return true
+    if result_request[-1]["success"] == False: return "STEP_FeedbackRevert_5 Failed: Request Step wrong!, Function: taskFeedbackRevert"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="FeedbackRevert")
+    if "Success" in result_B and "Success" in result_A: return "STEP_FeedbackRevert_5: Success Task FeedbackRevert Check Resolved (Feedback) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
+def STEP_FeedbackRevert_6(driver): # layer = analysis
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskSendToAnalysis(driver) == False: return "STEP_FeedbackRevert_6 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskSendToFeedback(driver) == False: return "STEP_FeedbackRevert_6 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_6 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="حل شده", assignee=username_otherformat, support_group="نظرسنجی", taskName="FeedbackRevert")
+    if check_should_exist_Tasks(driver, "taskFeedbackRevert") == False: return "Failed: Task FeedbackRevert button should exist but not found"
+    result_request = taskFeedbackRevert(driver, layer=3) # return true
+    if result_request[-1]["success"] == False: return "STEP_FeedbackRevert_6 Failed: Request Step wrong!, Function: taskFeedbackRevert"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="تحلیل", taskName="FeedbackRevert")
+    if "Success" in result_B and "Success" in result_A: return "STEP_FeedbackRevert_6: Success Task FeedbackRevert Check Resolved (Feedback) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
+def STEP_FeedbackRevert_7(driver):
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_7 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskSendToFeedback(driver) == False: return "STEP_FeedbackRevert_7 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_7 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_should_exist_Tasks(driver, "taskFeedbackRevert") == False: return "Failed: Task FeedbackRevert button should exist but not found"
+    return "STEP_FeedbackRevert_7: Success Task FeedbackRevert button should exist in Resolved status"
+
 # driver = webdriver.Firefox()
 # driver.maximize_window()
 # Open_CSP(driver)
 # Login_To_CSP(driver, username, password)
 # Open_Ticket(driver, "14040719-00008")
-# print(STEP_AnalysisRevert_1(driver))
-# print(STEP_AnalysisRevert_2(driver))
-# print(STEP_AnalysisRevert_3(driver))
-# print(STEP_AnalysisRevert_4(driver))
-# print(STEP_AnalysisRevert_5(driver))
+# print(STEP_FeedbackRevert_1(driver))
+# print(STEP_FeedbackRevert_2(driver))
+# print(STEP_FeedbackRevert_3(driver))
+# print(STEP_FeedbackRevert_4(driver))
+# print(STEP_FeedbackRevert_5(driver))
+# print(STEP_FeedbackRevert_6(driver))
+# print(STEP_FeedbackRevert_7(driver))

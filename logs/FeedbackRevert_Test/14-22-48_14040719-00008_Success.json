@@ -1,0 +1,68 @@
+{
+    "Ticket_id": "14040719-00008",
+    "start_time": "2025-10-18 14:12:34",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert button not should exist in Active,Pending Status (Audit layer) Step1",
+            "status": "STEP_FeedbackRevert_1: Success Task FeedbackRevert button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert button not should exist in Active,Pending Status (Technicals layer) Step2",
+            "status": "STEP_FeedbackRevert_2: Success Task FeedbackRevert button not should exist in Active status",
+            "layer": "[WG-239] اداره پشتیبانی-9991",
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert button not should exist in Active Status (Analysis layer) Step3",
+            "status": "STEP_FeedbackRevert_3: Success Task FeedbackRevert button not should exist in Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert Resolved Status (Feedback layer) Step4",
+            "status": "STEP_FeedbackRevert_4: Success Task FeedbackRevert Check Resolved (Feedback) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert Resolved Status (Feedback layer) Step5",
+            "status": "STEP_FeedbackRevert_5: Success Task FeedbackRevert Check Resolved (Feedback) status",
+            "layer": "سان‌میوه [WG-256]",
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert Resolved Status (Feedback layer) Step6",
+            "status": "STEP_FeedbackRevert_6: Success Task FeedbackRevert Check Resolved (Feedback) status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task FeedbackRevert button should exist in Resolved Status (Feedback layer) Step7",
+            "status": "STEP_FeedbackRevert_7: Success Task FeedbackRevert button should exist in Resolved status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}
