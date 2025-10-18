@@ -2390,7 +2390,7 @@ def STEP_AnalysisRevert_3(driver): # layer analysis to aduit
     if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="تحلیل", taskName="AnalysisRevert")
-    if check_should_exist_Tasks(driver, "AnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
+    if check_should_exist_Tasks(driver, "taskAnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
     result_request = taskAnalysisRevert(driver, layer=1) # return true
     if result_request[-1]["success"] == False: return "STEP_AnalysisRevert_3 Failed: Request Step wrong!, Function: taskAnalysisRevert"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group="ممیزی", taskName="AnalysisRevert")
@@ -2407,7 +2407,7 @@ def STEP_AnalysisRevert_4(driver): # layer analysis to technicals
     if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group="تحلیل", taskName="AnalysisRevert")
-    if check_should_exist_Tasks(driver, "AnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
+    if check_should_exist_Tasks(driver, "taskAnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
     result_request = taskAnalysisRevert(driver, layer=2) # return true
     if result_request[-1]["success"] == False: return "STEP_AnalysisRevert_4 Failed: Request Step wrong!, Function: taskAnalysisRevert"
     result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee='کارتابل گروهی', support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="AnalysisRevert")
@@ -2423,20 +2423,20 @@ def STEP_AnalysisRevert_5(driver): # layer = feedback
     if taskSendToAnalysis(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskSendToAnalysis"
     if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
-    if check_should_exist_Tasks(driver, "AnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
+    if check_should_exist_Tasks(driver, "taskAnalysisRevert") == False: return "Failed: Task AnalysisRevert button should exist but not found"
     if taskSendToFeedback(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskSendToFeedback"
     if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_AnalysisRevert_5 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskAnalysisRevert"): return "Failed: Task AnalysisRevert button not should exist but found"
     return "STEP_AnalysisRevert_5: Success Task AnalysisRevert button not should exist in Active status"
 
-driver = webdriver.Firefox()
-driver.maximize_window()
-Open_CSP(driver)
-Login_To_CSP(driver, username, password)
-Open_Ticket(driver, "14040719-00008")
-print(STEP_AnalysisRevert_1(driver))
-print(STEP_AnalysisRevert_2(driver))
-print(STEP_AnalysisRevert_3(driver))
-print(STEP_AnalysisRevert_4(driver))
-print(STEP_AnalysisRevert_5(driver))
+# driver = webdriver.Firefox()
+# driver.maximize_window()
+# Open_CSP(driver)
+# Login_To_CSP(driver, username, password)
+# Open_Ticket(driver, "14040719-00008")
+# print(STEP_AnalysisRevert_1(driver))
+# print(STEP_AnalysisRevert_2(driver))
+# print(STEP_AnalysisRevert_3(driver))
+# print(STEP_AnalysisRevert_4(driver))
+# print(STEP_AnalysisRevert_5(driver))

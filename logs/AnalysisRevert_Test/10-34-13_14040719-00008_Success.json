@@ -1,0 +1,56 @@
+{
+    "Ticket_id": "14040719-00008",
+    "start_time": "2025-10-18 10:27:37",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task AnalysisRevert button not should exist in Active,Pending Status (Audit layer) Step1",
+            "status": "STEP_AnalysisRevert_1: Success Task AnalysisRevert button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AnalysisRevert button not should exist in Active,Pending Status (Technicals layer) Step2",
+            "status": "STEP_AnalysisRevert_2: Success Task AnalysisRevert button not should exist in Active status",
+            "layer": "مبین نت [WG-192]",
+            "error": null
+        },
+        {
+            "function": "Check Task AnalysisRevert Active Status (Analysis to aduit layer) Step3",
+            "status": "STEP_AnalysisRevert_3: Success Task AnalysisRevert Check Resolved (Analysis) status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task AnalysisRevert Active Status (Analysis to technicals layer) Step4",
+            "status": "STEP_AnalysisRevert_4: Success Task AnalysisRevert Check Resolved (Analysis) status",
+            "layer": "نوآوران موج (بسیج) [WG-219]",
+            "error": null
+        },
+        {
+            "function": "Check Task AnalysisRevert button not should exist in Resolved Status (Feedback layer) Step5",
+            "status": "STEP_AnalysisRevert_5: Success Task AnalysisRevert button not should exist in Active status",
+            "layer": "نظرسنجی",
+            "error": null
+        }
+    ],
+    "status": "Success",
+    "error": null
+}
