@@ -1,0 +1,58 @@
+{
+    "Ticket_id": "14040604-00008",
+    "start_time": "2025-10-19 12:29:15",
+    "steps": [
+        {
+            "function": "Opening CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Login to CSP",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Opening Ticket",
+            "status": "success",
+            "layer": null,
+            "error": null
+        },
+        {
+            "function": "Check Task CreateSDM button not should exist in Active,Pending Status (Aduit layer) Step1",
+            "status": "STEP_CreateSDM_1: Success Task CreateSDM button not should exist in Active status",
+            "layer": "ممیزی",
+            "error": null
+        },
+        {
+            "function": "Check Task CreateSDM button not should exist in Active Status (Analysis layer) Step2",
+            "status": "STEP_CreateSDM_2: Success Task CreateSDM button not should exist in Active status",
+            "layer": "تحلیل",
+            "error": null
+        },
+        {
+            "function": "Check Task CreateSDM button not should exist in Resolved Status (Feedback layer) Step3",
+            "status": "STEP_CreateSDM_3: Success Task CreateSDM button not should exist in Active status",
+            "layer": "نظرسنجی",
+            "error": null
+        },
+        {
+            "function": "Check Task CreateSDM Active Status (Technicals layer) Step4",
+            "status": "Failed",
+            "layer": "عملیات شبکه [WG-235]",
+            "error": {
+                "type": "Exception",
+                "message": "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskCreateSDM",
+                "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakand-Web-Scraping-Automation\\Create SDM\\Create_SDM.py\", line 71, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskCreateSDM\n"
+            }
+        }
+    ],
+    "status": "Failed",
+    "error": {
+        "type": "Exception",
+        "message": "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskCreateSDM",
+        "traceback": "Traceback (most recent call last):\n  File \"c:\\Users\\IFIXIT\\Desktop\\PYTHON SCRIPT\\Yakand-Web-Scraping-Automation\\Create SDM\\Create_SDM.py\", line 71, in process\n    if \"Failed\" in result: raise Exception(result)\n                           ^^^^^^^^^^^^^^^^^^^^^^^\nException: STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskCreateSDM\n"
+    }
+}

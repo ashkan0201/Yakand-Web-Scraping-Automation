@@ -615,7 +615,7 @@ def expand_all_tree_nodes(driver, delay=0.2):
     print(f"[INFO] تعداد کلیک موفق: {clicked}/{len(toggles)}")
     return result
 
-def taskAssignToTechnicals(driver): 
+def taskAssignToTechnicals(driver, for_SDM=False):
     map_ = check_layer_map(driver)
     def wait_click(by, value, timeout=20):
         elem = WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, value)))
@@ -633,15 +633,18 @@ def taskAssignToTechnicals(driver):
     if not groups:
         raise Exception("هیچ گروه پشتیبانی‌ای یافت نشد")
     random.shuffle(groups)
-    chosen_group = random.choice(groups)
-    if map_[-1] == chosen_group:
+    if for_SDM:
+        chosen_group = "عملیات شبکه [WG-235]"
+    else:
         chosen_group = random.choice(groups)
+        if map_[-1] == chosen_group:
+            chosen_group = random.choice(groups)
     print(f"[INFO] انتخاب گروه: {chosen_group}")
     dropdown = wait_find(By.XPATH, "//div[@id='frmAssignToTechnicals']//span[contains(@class,'k-dropdowntree')]")
     driver.execute_script("arguments[0].click();", dropdown)
     opened = expand_all_tree_nodes(driver)
     if opened:
-        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//*[normalize-space(text())='{chosen_group}']")))
+        group_elem = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, f".//span[normalize-space(text())='{chosen_group}']")))
         driver.execute_script("arguments[0].click();", group_elem)
     opinion_box = wait_find(By.ID, "assignTechnichalAnalystOpinionText")
     opinion_box.send_keys("Test with Python")
@@ -1230,6 +1233,21 @@ def taskFeedbackRevert(driver, layer):
         Refresh_CSP(driver)
         result_request = Get_Request(driver, "/RevertFromFeedback", printable=True)
         return result_request
+
+def taskCreateSDM(driver):
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="taskCreateSDM"]'))).click()
+    btnSubmitCreateSDMTicket = WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.ID, 'btnSubmitCreateSDMTicket')))
+    driver.requests.clear()
+    driver.execute_script("arguments[0].scrollIntoView(true); arguments[0].click();", btnSubmitCreateSDMTicket)
+    Refresh_CSP(driver)
+    result_request = Get_Request(driver, "/CreateTicketInSDM", printable=True)
+    try:
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.XPATH, '//*[@id="top"]/div/div/div[3]/div/div[1]/div[1]/div/div[2]/div/div[3]/span')))
+    except:
+        sdm_result = False
+    else:
+        sdm_result = True
+    return result_request, sdm_result
 
 def STEP_Assigntome_1(driver):
     result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee="کارتابل گروهی", support_group="ممیزی", taskName="Assigntome")
@@ -2577,7 +2595,7 @@ def STEP_FeedbackRevert_6(driver): # layer = analysis
         if "Failed" in result_B: return result_B
         elif "Failed" in result_A: return result_A
 
-def STEP_FeedbackRevert_7(driver):
+def STEP_FeedbackRevert_7(driver): # layer = feedback
     if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
     if taskAssignIncidentToMe(driver) == False: return "STEP_FeedbackRevert_7 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
     if check_not_should_exist_Tasks(driver, "taskFeedbackRevert"): return "Failed: Task FeedbackRevert button not should exist but found"
@@ -2587,15 +2605,60 @@ def STEP_FeedbackRevert_7(driver):
     if check_should_exist_Tasks(driver, "taskFeedbackRevert") == False: return "Failed: Task FeedbackRevert button should exist but not found"
     return "STEP_FeedbackRevert_7: Success Task FeedbackRevert button should exist in Resolved status"
 
+"""
+this task dosen't work now
+"""
+def STEP_CreateSDM_1(driver): # layer = aduit
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskPark(driver) == False: return "STEP_CreateSDM_1 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_CreateSDM_1: Success Task CreateSDM button not should exist in Active status"
+
+def STEP_CreateSDM_2(driver): # layer = analysis
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskSendToAnalysis(driver) == False: return "STEP_CreateSDM_2 Failed: Request Step wrong!, Function: taskSendToAnalysis"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_2 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    return "STEP_CreateSDM_2: Success Task CreateSDM button not should exist in Active status"
+
+def STEP_CreateSDM_3(driver): # layer = feedback
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskSendToFeedback(driver) == False: return "STEP_CreateSDM_3 Failed: Request Step wrong!, Function: taskSendToFeedback"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_3 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskWrongAssignTtaskCreateSDMechnicals"): return "Failed: Task CreateSDM button not should exist but found"
+    return "STEP_CreateSDM_3: Success Task CreateSDM button not should exist in Active status"
+
+def STEP_CreateSDM_4(driver): # layer = technicals
+    if taskAssignToPreviousSg(driver) == False: return "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskAssignToPreviousSg"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_1 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignToTechnicals(driver, for_SDM=True) == False: return "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskAssignToTechnicals"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    if taskPark(driver) == False: return "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskPark"
+    if check_not_should_exist_Tasks(driver, "taskCreateSDM"): return "Failed: Task CreateSDM button not should exist but found"
+    if taskAssignIncidentToMe(driver) == False: return "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskAssignIncidentToMe"
+    result_B = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="CreateSDM")
+    if check_should_exist_Tasks(driver, "taskCreateSDM") == False: return "Failed: Task CreateSDM button should exist but not found"
+    result_request, After_Task_S = taskCreateSDM(driver) # return true
+    if result_request[-1]["success"] == False and After_Task_S == False: return "STEP_CreateSDM_4 Failed: Request Step wrong!, Function: taskCreateSDM"
+    result_A = Check_Befor_After_Task_Status(driver, status="فعال", assignee=username_otherformat, support_group=["ممیزی", "تحلیل", "نظرسنجی"], taskName="CreateSDM")
+    if "Success" in result_B and "Success" in result_A: return "STEP_CreateSDM_4: Success Task CreateSDM Check Resolved (technicals) status"
+    else:
+        if "Failed" in result_B: return result_B
+        elif "Failed" in result_A: return result_A
+
 # driver = webdriver.Firefox()
 # driver.maximize_window()
 # Open_CSP(driver)
 # Login_To_CSP(driver, username, password)
-# Open_Ticket(driver, "14040719-00008")
-# print(STEP_FeedbackRevert_1(driver))
-# print(STEP_FeedbackRevert_2(driver))
-# print(STEP_FeedbackRevert_3(driver))
-# print(STEP_FeedbackRevert_4(driver))
-# print(STEP_FeedbackRevert_5(driver))
-# print(STEP_FeedbackRevert_6(driver))
-# print(STEP_FeedbackRevert_7(driver))
+# Open_Ticket(driver, "14040604-00008")
+# print(STEP_CreateSDM_1(driver))
+# print(STEP_CreateSDM_2(driver))
+# print(STEP_CreateSDM_3(driver))
+# print(STEP_CreateSDM_4(driver))
